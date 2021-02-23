@@ -1,12 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.css';
-import { Button } from './components/Button';
 import { Container } from './components/Container';
+import { store } from './store';
+import { Counter } from './Counter';
+import { Message } from './components/Message';
 
 export const App = () => {
   return (
-    <Container>
-      <Button text="add new todo" handleClick={() => console.log("click")} />
-    </Container>
+    <Provider store={store}>
+      <Container>
+        <Counter />
+        <Message />
+      </Container>
+    </Provider>
   );
 }
