@@ -5,6 +5,7 @@ import { Container } from './components/Container';
 import { store } from './store';
 import { Counter } from './Counter';
 import { Message } from './components/Message';
+import { ListMessages } from './components/ListMessages';
 
 export const App = () => {
   return (
@@ -12,6 +13,7 @@ export const App = () => {
       <Container>
         <Counter />
         <Message />
+        <ListMessages />
       </Container>
     </Provider>
   );
