@@ -1,7 +1,25 @@
-// src/store/chat/types.ts
+import { rootReducer } from './reducer';
 
-import { rootReducer } from "./reducer";
+export type ToDoList = ToDoItem[];
 
+export type ToDoItem = {
+  title: string;
+  id: ToDoItemID;
+};
+
+export type ToDoItemID = string;
+
+export type addToDoItemAction = {
+  type: typeof ADD_TODO_ITEM;
+  payload: ToDoItem;
+};
+
+export type deleteToDoItemAction = {
+  type: typeof DELETE_TODO_ITEM;
+  payload: ToDoItemID;
+};
+
+export type toDoItemActionsType = addToDoItemAction | deleteToDoItemAction;
 export interface Message {
   user: string;
   message: string;
@@ -11,8 +29,6 @@ export interface Message {
 export interface ChatState {
   messages: Message[];
 }
-
-// src/store/system/types.ts
 
 export interface SystemState {
   loggedIn: boolean;
@@ -34,18 +50,17 @@ interface DeleteMessageAction {
 
 export type ChatActionTypes = SendMessageAction | DeleteMessageAction;
 
-// src/store/system/types.ts
-export const UPDATE_SESSION = 'UPDATE_SESSION';
-
 interface UpdateSessionAction {
   type: typeof UPDATE_SESSION;
   payload: SystemState;
 }
 export type SystemActionTypes = UpdateSessionAction;
 
-// src/store/chat/types.ts
+export const UPDATE_SESSION = 'UPDATE_SESSION';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
+export const ADD_TODO_ITEM = 'ADD_TODO_ITEM';
+export const DELETE_TODO_ITEM = 'DELETE_TODO_ITEM';
 
 export type RootState = ReturnType<typeof rootReducer>;
