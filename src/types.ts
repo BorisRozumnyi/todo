@@ -9,7 +9,7 @@ export type ToDoItem = {
   id: ToDoItemID;
 };
 
-export type ToDoItemID = string;
+export type ToDoItemID = number;
 
 export type addToDoItemAction = {
   type: typeof ADD_TODO_ITEM;
@@ -21,7 +21,7 @@ export type deleteToDoItemAction = {
   payload: ToDoItemID;
 };
 
-export type toDoItemActionsType = addToDoItemAction | deleteToDoItemAction;
+export type TodoItemActionsType = addToDoItemAction | deleteToDoItemAction;
 export interface Message {
   user: string;
   message: string;

@@ -1,10 +1,36 @@
 import { action, createAction } from 'typesafe-actions';
-import { ChatActionTypes, DELETE_MESSAGE, Message, SEND_MESSAGE, SystemActionTypes, SystemState, UPDATE_SESSION } from './types';
+import {
+  ADD_TODO_ITEM,
+  ChatActionTypes,
+  DELETE_MESSAGE,
+  DELETE_TODO_ITEM,
+  Message,
+  SEND_MESSAGE,
+  SystemActionTypes,
+  SystemState,
+  ToDoItem,
+  TodoItemActionsType,
+  ToDoItemID,
+  UPDATE_SESSION,
+} from './types';
 
 export const increment = action('INCREMENT');
 export const decrement = action('DECREMENT');
 
 export const addItem = createAction('ADD')();
+
+export function addToDoItem(newTodo: ToDoItem): TodoItemActionsType {
+  return {
+    type: ADD_TODO_ITEM,
+    payload: newTodo,
+  };
+}
+export function deleteToDoItem(removedTodoId: ToDoItemID): TodoItemActionsType {
+  return {
+    type: DELETE_TODO_ITEM,
+    payload: removedTodoId,
+  };
+}
 
 export function sendMessage(newMessage: Message): ChatActionTypes {
   return {

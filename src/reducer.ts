@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import {
   ToDoState,
-  toDoItemActionsType,
+  TodoItemActionsType,
   ADD_TODO_ITEM,
   DELETE_TODO_ITEM,
   ChatActionTypes,
@@ -19,7 +19,7 @@ const initialStateToDo: ToDoState = {
 
 export function todoReducer(
   state = initialStateToDo,
-  action: toDoItemActionsType
+  action: TodoItemActionsType
 ): ToDoState {
   switch (action.type) {
     case ADD_TODO_ITEM:

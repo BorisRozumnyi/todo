@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from './Button';
 import * as actions from '../actions'
-import { ADD_TODO_ITEM } from '../types';
 
 export const AddTodo = () => {
   const [todoTitle, setTodoTitle] = useState('');
@@ -12,7 +11,7 @@ export const AddTodo = () => {
     setTodoTitle(e.target.value);
   }
   const handleAddTodo = () => {
-    dispatch({ type: ADD_TODO_ITEM, payload: todoTitle })
+    dispatch(actions.addToDoItem({title: todoTitle, id: Date.now()}))
   }
   return (
     <>
