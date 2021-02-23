@@ -6,6 +6,7 @@ import { store } from './store';
 import { Counter } from './Counter';
 import { Message } from './components/Message';
 import { ListMessages } from './components/ListMessages';
+import { AddTodo } from './components/TodoForm';
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
         <Counter />
         <Message />
         <ListMessages />
+        <AddTodo />
       </Container>
     </Provider>
   );
