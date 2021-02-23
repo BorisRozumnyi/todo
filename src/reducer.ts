@@ -3,37 +3,11 @@ import {
   ChatActionTypes,
   ChatState,
   DELETE_MESSAGE,
-  Message,
   SEND_MESSAGE,
   SystemActionTypes,
   SystemState,
   UPDATE_SESSION,
 } from './types';
-
-export function sendMessage(newMessage: Message): ChatActionTypes {
-  return {
-    type: SEND_MESSAGE,
-    payload: newMessage,
-  };
-}
-
-export function deleteMessage(timestamp: number): ChatActionTypes {
-  return {
-    type: DELETE_MESSAGE,
-    meta: {
-      timestamp,
-    },
-  };
-}
-
-export function updateSession(newSession: SystemState): SystemActionTypes {
-  return {
-    type: UPDATE_SESSION,
-    payload: newSession,
-  };
-}
-
-// reducers
 
 const initialState: ChatState = {
   messages: [],
