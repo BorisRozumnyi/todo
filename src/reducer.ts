@@ -87,6 +87,7 @@ export const rootReducer = combineReducers({
   system: systemReducer,
   chat: chatReducer,
   counter: (state: any, action: any) => state || 0,
+  todoReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
