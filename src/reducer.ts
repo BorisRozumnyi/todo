@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
 import {
+  ToDoState,
+  toDoItemActionsType,
+  ADD_TODO_ITEM,
+  DELETE_TODO_ITEM,
   ChatActionTypes,
   ChatState,
   DELETE_MESSAGE,
@@ -8,6 +12,30 @@ import {
   SystemState,
   UPDATE_SESSION,
 } from './types';
+
+const initialStateToDo: ToDoState = {
+  todos: [],
+};
+
+export function todoReducer(
+  state = initialStateToDo,
+  action: toDoItemActionsType
+): ToDoState {
+  switch (action.type) {
+    case ADD_TODO_ITEM:
+      return {
+        todos: [...state.todos, action.payload],
+      };
+    case DELETE_TODO_ITEM:
+      return {
+        todos: state.todos.filter(
+          (todos) => todos.id !== action.payload
+        ),
+      };
+    default:
+      return state;
+  }
+}
 
 const initialState: ChatState = {
   messages: [],

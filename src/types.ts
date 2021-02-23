@@ -1,6 +1,8 @@
 import { rootReducer } from './reducer';
 
-export type ToDoList = ToDoItem[];
+export type ToDoState = {
+  todos: ToDoItem[] | [];
+}
 
 export type ToDoItem = {
   title: string;
