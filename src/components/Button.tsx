@@ -19,12 +19,12 @@ export const Button: React.FC<Props> = ({ handleClick, text, children }) => {
 const StyledButton = styled.button`
   color: #63abb7;
   font-weight: bold;
-  border-radius: 3px;
-  padding: 1rem 3rem;
-  margin: 0.5rem 1rem;
+  width: 100%;
   background: transparent;
+  border-radius: 3px;
   border: 2px solid #63abb7;
   transition: 0.2s all;
+  cursor: pointer;
   &:hover {
     background: #63abb7;
     color: white;
