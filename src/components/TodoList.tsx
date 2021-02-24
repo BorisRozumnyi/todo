@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState, ToDoItem } from '../types';
 import { Col, Row } from './Container';
+import { TodoItem } from './TodoItem';
 
 export const TodoList = () => {
   const { todos } = useSelector((state: RootState) => state.todoReducer)
@@ -14,7 +15,7 @@ export const TodoList = () => {
           <h3>Todo List:</h3>
         </Col>
       </Row>
-        {todos.length > 0 && todos.map((todo: ToDoItem) => <p>{todo.title}</p>)}
+        {todos.length > 0 && todos.map((todo: ToDoItem) => <TodoItem todo={todo} key={todo.id} />)}
     </Wrapper>
   );
 };
