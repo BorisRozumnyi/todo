@@ -19,18 +19,25 @@ export const decrement = action('DECREMENT');
 
 export const addItem = createAction('ADD')();
 
-export function addToDoItem(newTodo: ToDoItem): TodoItemActionsType {
-  return {
-    type: ADD_TODO_ITEM,
-    payload: newTodo,
-  };
-}
-export function deleteToDoItem(removedTodoId: ToDoItemID): TodoItemActionsType {
-  return {
-    type: DELETE_TODO_ITEM,
-    payload: removedTodoId,
-  };
-}
+// export function addToDoItem(newTodo: ToDoItem): TodoItemActionsType {
+//   return {
+//     type: ADD_TODO_ITEM,
+//     payload: newTodo,
+//   };
+// }
+// export function deleteToDoItem(removedTodoId: ToDoItemID): TodoItemActionsType {
+//   return {
+//     type: DELETE_TODO_ITEM,
+//     payload: removedTodoId,
+//   };
+// }
+
+export const addToDoItem = createAction(
+  'ADD_TODO_ITEM',
+)<ToDoItem>();
+export const deleteToDoItem = createAction(
+  'DELETE_TODO_ITEM',
+)<ToDoItemID>();
 
 export function sendMessage(newMessage: Message): ChatActionTypes {
   return {
