@@ -15,7 +15,7 @@ export const TodoList = () => {
           <h3>Todo List:</h3>
         </Col>
       </Row>
-        {todos.length > 0 && todos.map((todo: ToDoItem) => <TodoItem todo={todo} key={todo.id} />)}
+      {todos.length > 0 && todos.map((todo: ToDoItem) => <TodoItem todo={todo} key={todo.id} />)}
     </Wrapper>
   );
 };
