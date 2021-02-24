@@ -1,7 +1,7 @@
 import { rootReducer } from './reducer';
 
 export type ToDoState = {
-  todos: ToDoItem[] | [];
+  todos: ToDoItem[];
 }
 
 export type ToDoItem = {
