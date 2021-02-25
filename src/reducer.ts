@@ -11,39 +11,18 @@ export const rootReducer = combineReducers({
     ])
     .handleAction(actions.deleteToDoItem, (state, action) =>
       state.filter((item) => item.id !== action.payload)
+    )
+    .handleAction(actions.updateToDoItem, (state, action) =>
+      state.map((item) => {
+        if (item.id === action.payload.id) {
+          const updatedItem = {
+            title: action.payload.title,
+            id: item.id,
+          }
+          return updatedItem;
+        }
+        return item;
+      })
     ),
   counter: (state: any, action: any) => state || 0,
 });
-
-// type Payload = {
-//   text: string;
-// }
-
-// export function todos(state = [], action: <ActionType, Payload>) {
-//   switch (action.type) {
-//     case 'ADD_TODO':
-//       return state.concat([action.text])
-//     default:
-//       return state
-//   }
-// }
-
-// export function counter(state = 0, action: Action) {
-//   switch (action.type) {
-//     case 'INCREMENT':
-//       return state + 1
-//     case 'DECREMENT':
-//       return state - 1
-//     default:
-//       return state
-//   }
-// }
-
-// export const rootReducer = combineReducers({
-//   todos,
-//   counter,
-// });
-// export const rootReducer = combineReducers({
-//   todos: createReducer({}).handleAction(actions.addItem),
-//   counter: createReducer(0).handleAction(actions.increment),
-// });

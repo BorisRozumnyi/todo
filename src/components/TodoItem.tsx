@@ -15,7 +15,7 @@ export const TodoItem: React.FC<Props> = ({ todo: { title, id } }) => {
   const dispatch = useDispatch();
 
   const handleEditTodo = (id: ToDoItemID) => {
-    console.log(actions.deleteToDoItem(id))
+    dispatch(actions.updateToDoItem({ title: 'new', id }))
   }
   const handleDeleteTodo = (id: ToDoItemID) => {
     dispatch(actions.deleteToDoItem(id))
