@@ -1,22 +1,16 @@
-import { takeEvery, all } from 'redux-saga/effects';
+import axios from 'axios';
+import { takeEvery, call, put } from 'redux-saga/effects';
+import { postTodos } from './actions';
 
-function* addTodo(action: any) {
-  const { data } = action;
-  yield console.log('test:', data);
+export function* watchPostTodos() {
+  yield takeEvery(postTodos.request, todos);
 }
-// function* incrementWorker(action: any) {
-//   // yield put({ type: 'INCREMENT' });
-//   yield put(actions.increment);
-// }
-// function* decrementWorker(action: any) {
-//   yield put({ type: 'DECREMENT' });
-// }
 
-export function* mainSaga() {
-  yield all([
-    // takeEvery(actions.add, addTodo),
-    takeEvery('ADD', addTodo),
-    // takeEvery('INCREMENT', incrementWorker),
-    // takeEvery('DECREMENT', decrementWorker),
-  ]);
+function* todos(action: ReturnType<typeof postTodos.request>): Generator {
+  try {
+    const response: any = yield call(axios.post, '/api/todo');
+    yield console.log(response);
+  } catch (err) {
+    yield put(postTodos.failure(err));
+  }
 }

@@ -1,12 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState, ToDoItem } from '../types';
 import { Col, Row } from './Container';
 import { TodoItem } from './TodoItem';
+import { Button } from './Button';
+import * as actions from '../actions'
 
 export const TodoList = () => {
   const { todos } = useSelector((state: RootState) => state)
+  const dispatch = useDispatch();
+
+  const subbmitTodos = () => {
+    dispatch(actions.postTodos.request(todos))
+  }
 
   return (
     <Wrapper>
@@ -16,6 +23,7 @@ export const TodoList = () => {
         </Col>
       </Row>
       {todos.length > 0 && todos.map((todo: ToDoItem) => <TodoItem todo={todo} key={todo.id} />)}
+      <StyledButtonCustom text="Submit" handleClick={subbmitTodos} />
     </Wrapper>
   );
 };
@@ -28,4 +36,8 @@ const Wrapper = styled.div`
   border-radius: 3px;
   background: transparent;
   border: 2px solid #63abb7;
+`;
+
+const StyledButtonCustom = styled(Button)`
+  margin-top: 10px;
 `;
