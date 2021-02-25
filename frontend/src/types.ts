@@ -6,11 +6,16 @@ export type ToDoState = {
 };
 
 export type ToDoItem = {
-  title: string;
+  title: ToDoItemTitle;
   id: ToDoItemID;
 };
-
 export type ToDoItemID = number;
+export type ToDoItemTitle = string;
+
+export type TodosError = {
+  message: string;
+};
+
 
 export type RootState = ReturnType<typeof rootReducer>;
 
