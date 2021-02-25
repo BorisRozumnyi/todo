@@ -1,5 +1,4 @@
-import { takeEvery, all, put } from 'redux-saga/effects';
-import * as actions from './actions';
+import { takeEvery, all } from 'redux-saga/effects';
 
 function* addTodo(action: any) {
   const { data } = action;
