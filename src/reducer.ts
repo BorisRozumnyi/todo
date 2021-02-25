@@ -1,96 +1,19 @@
 import { combineReducers } from 'redux';
-import {
-  ToDoState,
-  TodoItemActionsType,
-  ADD_TODO_ITEM,
-  DELETE_TODO_ITEM,
-  ChatActionTypes,
-  ChatState,
-  DELETE_MESSAGE,
-  SEND_MESSAGE,
-  SystemActionTypes,
-  SystemState,
-  UPDATE_SESSION,
-} from './types';
-
-const initialStateToDo: ToDoState = {
-  todos: [],
-};
-
-export function todoReducer(
-  state = initialStateToDo,
-  action: TodoItemActionsType
-): ToDoState {
-  switch (action.type) {
-    case ADD_TODO_ITEM:
-      return {
-        todos: [...state.todos, action.payload],
-      };
-    case DELETE_TODO_ITEM:
-      return {
-        todos: state.todos.filter(
-          (todos) => todos.id !== action.payload
-        ),
-      };
-    default:
-      return state;
-  }
-}
-
-const initialState: ChatState = {
-  messages: [],
-};
-
-export function chatReducer(
-  state = initialState,
-  action: ChatActionTypes
-): ChatState {
-  switch (action.type) {
-    case SEND_MESSAGE:
-      return {
-        messages: [...state.messages, action.payload],
-      };
-    case DELETE_MESSAGE:
-      return {
-        messages: state.messages.filter(
-          (message) => message.timestamp !== action.meta.timestamp
-        ),
-      };
-    default:
-      return state;
-  }
-}
-
-const initialStateSystem: SystemState = {
-  loggedIn: false,
-  session: '',
-  userName: '',
-};
-
-export function systemReducer(
-  state = initialStateSystem,
-  action: SystemActionTypes
-): SystemState {
-  switch (action.type) {
-    case UPDATE_SESSION: {
-      return {
-        ...state,
-        ...action.payload,
-      };
-    }
-    default:
-      return state;
-  }
-}
+import { createReducer } from 'typesafe-actions';
+import * as actions from './actions';
+import { ToDoItem } from './types';
 
 export const rootReducer = combineReducers({
-  system: systemReducer,
-  chat: chatReducer,
+  todos: createReducer([] as ToDoItem[])
+    .handleAction(actions.addToDoItem, (state, action) => [
+      ...state,
+      action.payload,
+    ])
+    .handleAction(actions.deleteToDoItem, (state, action) =>
+      state.filter((item) => item.id !== action.payload)
+    ),
   counter: (state: any, action: any) => state || 0,
-  todoReducer,
 });
-
-export type RootState = ReturnType<typeof rootReducer>;
 
 // type Payload = {
 //   text: string;

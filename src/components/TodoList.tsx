@@ -6,7 +6,7 @@ import { Col, Row } from './Container';
 import { TodoItem } from './TodoItem';
 
 export const TodoList = () => {
-  const { todos } = useSelector((state: RootState) => state.todoReducer)
+  const { todos } = useSelector((state: RootState) => state)
 
   return (
     <Wrapper>

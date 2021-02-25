@@ -3,9 +3,7 @@ import { Provider } from 'react-redux';
 import './App.css';
 import { Container } from './components/Container';
 import { store } from './store';
-import { Counter } from './Counter';
-import { Message } from './components/Message';
-import { ListMessages } from './components/ListMessages';
+// import { Counter } from './Counter';
 import { AddTodo } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 
@@ -13,9 +11,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <Container>
-        {/* <Counter />
-        <Message />
-        <ListMessages /> */}
+        {/* <Counter /> */}
         <AddTodo />
         <TodoList />
       </Container>
