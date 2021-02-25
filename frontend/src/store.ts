@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { rootReducer } from './reducer';
 
-import { watchPostTodos } from './sagas';
+import { watchGetTodos, watchPostTodos } from './sagas';
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: typeof compose;
@@ -21,4 +21,5 @@ export const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
 
+sagaMiddleware.run(watchGetTodos);
 sagaMiddleware.run(watchPostTodos);
