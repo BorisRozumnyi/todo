@@ -24,5 +24,4 @@ export const rootReducer = combineReducers({
         return item;
       })
     ),
-  counter: (state: any, action: any) => state || 0,
 });

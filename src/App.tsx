@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import './App.css';
 import { Container } from './components/Container';
 import { store } from './store';
-// import { Counter } from './Counter';
 import { TodoForm } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 
@@ -11,7 +10,6 @@ export const App = () => {
   return (
     <Provider store={store}>
       <Container>
-        {/* <Counter /> */}
         <TodoForm />
         <TodoList />
       </Container>
