@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, ToDoItem } from '../types';
@@ -8,6 +8,9 @@ import { Button } from './Button';
 import * as actions from '../actions'
 
 export const TodoList = () => {
+  useEffect(() => {
+    dispatch(actions.getTodos.request())
+  })
   const { todos } = useSelector((state: RootState) => state)
   const dispatch = useDispatch();
 
