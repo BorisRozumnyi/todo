@@ -4,7 +4,7 @@ import './App.css';
 import { Container } from './components/Container';
 import { store } from './store';
 // import { Counter } from './Counter';
-import { AddTodo } from './components/TodoForm';
+import { TodoForm } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 
 export const App = () => {
@@ -12,7 +12,7 @@ export const App = () => {
     <Provider store={store}>
       <Container>
         {/* <Counter /> */}
-        <AddTodo />
+        <TodoForm />
         <TodoList />
       </Container>
     </Provider>

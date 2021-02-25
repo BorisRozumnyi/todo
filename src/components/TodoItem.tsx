@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { ToDoItem, ToDoItemID } from '../types';
 import { Col, Row } from './Container';
 import { Button } from './Button';
+import { TodoForm } from './TodoForm';
 import * as actions from '../actions'
-import { useDispatch } from 'react-redux';
 
 
 type Props = {
@@ -13,26 +14,31 @@ type Props = {
 
 export const TodoItem: React.FC<Props> = ({ todo: { title, id } }) => {
   const dispatch = useDispatch();
+  const [edit, setEdit] = useState(false)
 
   const handleEditTodo = (id: ToDoItemID) => {
-    dispatch(actions.updateToDoItem({ title: 'new', id }))
+    setEdit(true)
+    // dispatch(actions.updateToDoItem({ title: 'new', id }))
   }
   const handleDeleteTodo = (id: ToDoItemID) => {
     dispatch(actions.deleteToDoItem(id))
   }
   return (
     <Wrapper>
-      <Row>
-        <Col>
-          <h3>{title}</h3>
-        </Col>
-        <StyledCol>
-          <Button text='edit' handleClick={() => handleEditTodo(id)} />
-        </StyledCol>
-        <StyledCol>
-          <Button text='delete' handleClick={() => handleDeleteTodo(id)} />
-        </StyledCol>
-      </Row>
+      {!edit &&
+        <Row>
+          <Col>
+            <h3>{title}</h3>
+          </Col>
+          <StyledCol>
+            <Button text='edit' handleClick={() => handleEditTodo(id)} />
+          </StyledCol>
+          <StyledCol>
+            <Button text='delete' handleClick={() => handleDeleteTodo(id)} />
+          </StyledCol>
+        </Row>
+      }
+      {edit && <TodoForm title={title} id={id} closeEdit={() => setEdit(false)} />}
     </Wrapper>
   );
 };
