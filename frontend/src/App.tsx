@@ -15,4 +15,4 @@ export const App = () => {
       </Container>
     </Provider>
   );
-}
+};

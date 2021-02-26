@@ -18,7 +18,6 @@ export type TodosError = {
   message: string;
 };
 
-
 export type RootState = ReturnType<typeof rootReducer>;
 
 export type RootAction = ActionType<typeof import('./actions')>;

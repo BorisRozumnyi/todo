@@ -5,7 +5,6 @@ type Props = {
   children: React.ReactNode;
 };
 
-
 export const Container: React.FC<Props> = ({ children }) => (
   <StyledContainer>{children}</StyledContainer>
 );
@@ -29,4 +28,3 @@ export const Col = styled.div`
   width: 50%;
   padding: 0 15px;
 `;
-

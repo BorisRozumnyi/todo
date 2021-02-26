@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Button } from './Button';
 import { Row, Col } from './Container';
-import * as actions from '../actions'
+import * as actions from '../actions';
 import { ToDoItem } from '../types';
 
 type Props = {
   todo?: ToDoItem;
   closeEdit?: () => void;
-}
+};
 
 export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
   // const { title = '', _id = undefined, created = undefined } = todo;
@@ -18,20 +18,36 @@ export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
 
   const handleChanegeTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.target.value);
-  }
+  };
   const handleTodo = () => {
-    !todo?.created && dispatch(actions.addToDoItem({ title: todoTitle, created: Date.now() }))
-    todo?.created && dispatch(actions.updateToDoItem({ title: todoTitle, created: todo.created, _id: todo._id }))
-      && closeEdit && closeEdit()
-  }
+    !todo?.created &&
+      dispatch(actions.addToDoItem({ title: todoTitle, created: Date.now() }));
+    todo?.created &&
+      dispatch(
+        actions.updateToDoItem({
+          title: todoTitle,
+          created: todo.created,
+          _id: todo._id,
+        })
+      ) &&
+      closeEdit &&
+      closeEdit();
+  };
   return (
     <Wrapper>
       <Row>
         <Col>
-          <Input type="text" onChange={handleChanegeTodoTitle} defaultValue={todoTitle} />
+          <Input
+            type="text"
+            onChange={handleChanegeTodoTitle}
+            defaultValue={todoTitle}
+          />
         </Col>
         <Col>
-          <Button text={todo?.title ? "Save" : 'Add Todo'} handleClick={handleTodo} />
+          <Button
+            text={todo?.title ? 'Save' : 'Add Todo'}
+            handleClick={handleTodo}
+          />
         </Col>
       </Row>
     </Wrapper>

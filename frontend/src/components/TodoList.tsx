@@ -5,18 +5,18 @@ import { RootState, ToDoItem } from '../types';
 import { Col, Row } from './Container';
 import { TodoItem } from './TodoItem';
 import { Button } from './Button';
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 export const TodoList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(actions.getTodos.request())
-  }, [dispatch])
-  const { todos } = useSelector((state: RootState) => state)
+    dispatch(actions.getTodos.request());
+  }, [dispatch]);
+  const { todos } = useSelector((state: RootState) => state);
 
   const subbmitTodos = () => {
-    dispatch(actions.postTodos.request(todos))
-  }
+    dispatch(actions.postTodos.request(todos));
+  };
 
   return (
     <Wrapper>
@@ -25,7 +25,10 @@ export const TodoList = () => {
           <h3>Todo List:</h3>
         </Col>
       </Row>
-      {todos.length > 0 && todos.map((todo: ToDoItem) => <TodoItem todo={todo} key={todo._id || todo.created} />)}
+      {todos.length > 0 &&
+        todos.map((todo: ToDoItem) => (
+          <TodoItem todo={todo} key={todo._id || todo.created} />
+        ))}
       <StyledButtonCustom text="Submit" handleClick={subbmitTodos} />
     </Wrapper>
   );

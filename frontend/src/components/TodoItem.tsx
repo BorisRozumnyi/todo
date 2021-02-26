@@ -5,8 +5,7 @@ import { ToDoItem } from '../types';
 import { Col, Row } from './Container';
 import { Button } from './Button';
 import { TodoForm } from './TodoForm';
-import * as actions from '../actions'
-
+import * as actions from '../actions';
 
 type Props = {
   todo: ToDoItem;
@@ -15,30 +14,29 @@ type Props = {
 export const TodoItem: React.FC<Props> = ({ todo }) => {
   const { title, _id, created } = todo;
   const dispatch = useDispatch();
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState(false);
 
   const handleEditTodo = () => {
-    setEdit(true)
-  }
+    setEdit(true);
+  };
   const handleDeleteTodo = () => {
-    dispatch(actions.deleteToDoItem(_id || created))
-    console.log(title, _id, created)
-  }
+    dispatch(actions.deleteToDoItem(_id || created));
+  };
   return (
     <Wrapper>
-      {!edit &&
+      {!edit && (
         <Row>
           <Col>
             <h3>{title}</h3>
           </Col>
           <StyledCol>
-            <Button text='edit' handleClick={handleEditTodo} />
+            <Button text="edit" handleClick={handleEditTodo} />
           </StyledCol>
           <StyledCol>
-            <Button text='delete' handleClick={handleDeleteTodo} />
+            <Button text="delete" handleClick={handleDeleteTodo} />
           </StyledCol>
         </Row>
-      }
+      )}
       {edit && <TodoForm todo={todo} closeEdit={() => setEdit(false)} />}
     </Wrapper>
   );
@@ -55,4 +53,4 @@ const Wrapper = styled.div`
 
 const StyledCol = styled(Col)`
   max-width: 20%;
-`
+`;
