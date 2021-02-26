@@ -5,6 +5,7 @@ import { ToDoItem } from './types';
 
 export const rootReducer = combineReducers({
   todos: createReducer([] as ToDoItem[])
+    .handleAction(actions.getTodos.success, (_state, action) => action.payload)
     .handleAction(actions.addToDoItem, (state, action) => [
       ...state,
       action.payload,
@@ -18,7 +19,7 @@ export const rootReducer = combineReducers({
           const updatedItem = {
             title: action.payload.title,
             id: item.id,
-          }
+          };
           return updatedItem;
         }
         return item;

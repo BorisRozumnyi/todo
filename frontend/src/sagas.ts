@@ -13,9 +13,9 @@ export function* watchPostTodos() {
 function* workGetTodos(): Generator {
   try {
     const response: any = yield call(getRequest);
-    yield console.log(response);
+    yield put(getTodos.success(response.data));
   } catch (err) {
-    yield put(getTodos.failure(err));
+    yield put(getTodos.failure(err.data));
   }
 }
 function* todos(action: ReturnType<typeof postTodos.request>): Generator {
