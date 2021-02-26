@@ -4,24 +4,24 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { Row, Col } from './Container';
 import * as actions from '../actions'
-import { ToDoItemID } from '../types';
+import { ToDoItem } from '../types';
 
 type Props = {
-  title?: string;
-  id?: ToDoItemID;
+  todo?: ToDoItem;
   closeEdit?: () => void;
 }
 
-export const TodoForm: React.FC<Props> = ({ title, id, closeEdit }) => {
-  const [todoTitle, setTodoTitle] = useState(title || '');
+export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
+  // const { title = '', _id = undefined, created = undefined } = todo;
+  const [todoTitle, setTodoTitle] = useState(todo?.title || '');
   const dispatch = useDispatch();
 
   const handleChanegeTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.target.value);
   }
   const handleTodo = () => {
-    !id && dispatch(actions.addToDoItem({ title: todoTitle, id: Date.now() }))
-    id && dispatch(actions.updateToDoItem({ title: todoTitle, id: id }))
+    !todo?.created && dispatch(actions.addToDoItem({ title: todoTitle, created: Date.now() }))
+    todo?.created && dispatch(actions.updateToDoItem({ title: todoTitle, created: todo.created, _id: todo._id }))
       && closeEdit && closeEdit()
   }
   return (
@@ -31,7 +31,7 @@ export const TodoForm: React.FC<Props> = ({ title, id, closeEdit }) => {
           <Input type="text" onChange={handleChanegeTodoTitle} defaultValue={todoTitle} />
         </Col>
         <Col>
-          <Button text={title ? "Save" : 'Add Todo'} handleClick={handleTodo} />
+          <Button text={todo?.title ? "Save" : 'Add Todo'} handleClick={handleTodo} />
         </Col>
       </Row>
     </Wrapper>

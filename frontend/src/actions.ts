@@ -1,8 +1,8 @@
 import { createAction, createAsyncAction } from 'typesafe-actions';
-import { ToDoItem, ToDoItemID, TodosError } from './types';
+import { ToDoItem, ToDoItemCreated, ToDoItemID, TodosError } from './types';
 
 export const addToDoItem = createAction('ADD_TODO_ITEM')<ToDoItem>();
-export const deleteToDoItem = createAction('DELETE_TODO_ITEM')<ToDoItemID>();
+export const deleteToDoItem = createAction('DELETE_TODO_ITEM')<ToDoItemID | ToDoItemCreated>();
 export const updateToDoItem = createAction('UPDATE_TODO_ITEM')<ToDoItem>();
 
 export const getTodos = createAsyncAction(

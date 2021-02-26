@@ -7,9 +7,11 @@ export type ToDoState = {
 
 export type ToDoItem = {
   title: ToDoItemTitle;
-  id: ToDoItemID;
+  created: ToDoItemCreated;
+  _id?: ToDoItemID;
 };
-export type ToDoItemID = number;
+export type ToDoItemID = string;
+export type ToDoItemCreated = number;
 export type ToDoItemTitle = string;
 
 export type TodosError = {

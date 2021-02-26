@@ -11,14 +11,18 @@ export const rootReducer = combineReducers({
       action.payload,
     ])
     .handleAction(actions.deleteToDoItem, (state, action) =>
-      state.filter((item) => item.id !== action.payload)
+      state.filter((item) => {
+        if (item._id) return item._id !== action.payload;
+        return item.created !== action.payload;
+      })
     )
     .handleAction(actions.updateToDoItem, (state, action) =>
       state.map((item) => {
-        if (item.id === action.payload.id) {
+        if (item._id === action.payload._id) {
           const updatedItem = {
             title: action.payload.title,
-            id: item.id,
+            created: item.created,
+            _id: item._id,
           };
           return updatedItem;
         }
