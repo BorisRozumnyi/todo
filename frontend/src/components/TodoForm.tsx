@@ -12,7 +12,6 @@ type Props = {
 };
 
 export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
-  // const { title = '', _id = undefined, created = undefined } = todo;
   const [todoTitle, setTodoTitle] = useState(todo?.title || '');
   const dispatch = useDispatch();
 
