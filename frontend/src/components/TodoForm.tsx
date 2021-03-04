@@ -3,8 +3,12 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Button } from './Button';
 import { Row, Col } from './Container';
-import * as actions from '../actions';
-import { ToDoItem } from '../types';
+import * as actions from "../actions";
+import { ToDoItem } from '../types'
+
+
+
+
 
 type Props = {
   todo?: ToDoItem;
@@ -19,18 +23,18 @@ export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
     setTodoTitle(e.target.value);
   };
   const handleTodo = () => {
-    !todo?.created &&
+    if (!todo?.created) {
       dispatch(actions.addToDoItem({ title: todoTitle, created: Date.now() }));
-    todo?.created &&
+    } else {
       dispatch(
         actions.updateToDoItem({
           title: todoTitle,
           created: todo.created,
           _id: todo._id,
         })
-      ) &&
-      closeEdit &&
-      closeEdit();
+      )
+      closeEdit && closeEdit();
+    }
   };
   return (
     <Wrapper>
