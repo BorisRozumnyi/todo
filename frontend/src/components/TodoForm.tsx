@@ -10,6 +10,14 @@ import { ToDoItem } from '../types'
 
 
 
+
+console.log("lint test")
+
+
+
+
+
+
 type Props = {
   todo?: ToDoItem;
   closeEdit?: () => void;
@@ -32,7 +40,7 @@ export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
           created: todo.created,
           _id: todo._id,
         })
-      )
+      );
       closeEdit && closeEdit();
     }
   };
