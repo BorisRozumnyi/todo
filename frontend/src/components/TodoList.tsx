@@ -12,7 +12,7 @@ export const TodoList = () => {
   useEffect(() => {
     dispatch(actions.getTodos.request());
   }, [dispatch]);
-  const { todos } = useSelector((state: RootState) => state);
+  const todos = useSelector((state: RootState) => state.todos);
 
   const subbmitTodos = () => {
     dispatch(actions.postTodos.request(todos));
