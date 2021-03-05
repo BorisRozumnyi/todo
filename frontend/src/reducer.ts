@@ -14,7 +14,7 @@ export const rootReducer = combineReducers({
       state.filter((item) => {
         if (item._id) return item._id !== action.payload;
         return item.created !== action.payload;
-      })
+      }),
     )
     .handleAction(actions.updateToDoItem, (state, action) =>
       state.map((item) => {
@@ -27,6 +27,6 @@ export const rootReducer = combineReducers({
           return updatedItem;
         }
         return item;
-      })
+      }),
     ),
 });

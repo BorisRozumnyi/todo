@@ -3,20 +3,8 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Button } from './Button';
 import { Row, Col } from './Container';
-import * as actions from "../actions";
-import { ToDoItem } from '../types'
-
-
-
-
-
-
-console.log("lint test")
-
-
-
-
-
+import * as actions from '../actions';
+import { ToDoItem } from '../types';
 
 type Props = {
   todo?: ToDoItem;
@@ -39,7 +27,7 @@ export const TodoForm: React.FC<Props> = ({ todo, closeEdit }) => {
           title: todoTitle,
           created: todo.created,
           _id: todo._id,
-        })
+        }),
       );
       closeEdit && closeEdit();
     }

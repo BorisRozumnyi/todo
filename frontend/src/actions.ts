@@ -10,18 +10,11 @@ export const updateToDoItem = createAction('UPDATE_TODO_ITEM')<ToDoItem>();
 export const getTodos = createAsyncAction(
   'GET_REQUEST_TODOS_START',
   'GET_REQUEST_TODOS_SUCCESS',
-  'GET_REQUEST_TODOS_ERROR'
+  'GET_REQUEST_TODOS_ERROR',
 )<undefined, ToDoItem[], TodosError>();
-
-
-
-
-
-
-
 
 export const postTodos = createAsyncAction(
   'POST_REQUEST_TODOS_START',
   'POST_REQUEST_TODOS_SUCCESS',
-  'POST_REQUEST_TODOS_ERROR'
+  'POST_REQUEST_TODOS_ERROR',
 )<ToDoItem[], ToDoItem, TodosError>();
