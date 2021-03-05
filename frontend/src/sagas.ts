@@ -12,31 +12,22 @@ export function* watchPostTodos() {
 
 function* workGetTodos(): Generator {
   try {
-    const response: any = yield call(getRequest);
-    yield put(getTodos.success(response.data));
+    const response = (yield call(getTodosResponse)) as ToDoItem[];
+    yield put(getTodos.success(response));
   } catch (err) {
     yield put(getTodos.failure(err.data));
   }
 }
 function* todos(action: ReturnType<typeof postTodos.request>): Generator {
   try {
-    const response: any = yield call(postRequest, action.payload);
-    yield console.log(response);
+    yield call(postRequest, action.payload);
   } catch (err) {
     yield put(postTodos.failure(err));
   }
 }
 
-function getRequest() {
-  return axios({
-    method: 'GET',
-    url: '/api/todo',
-  });
-}
-function postRequest(todosData: ToDoItem[]) {
-  return axios({
-    method: 'POST',
-    url: '/api/todo',
-    data: todosData,
-  });
-}
+const getTodosResponse = () =>
+  axios.get<ToDoItem[]>('/api/todo').then((res) => res.data);
+
+const postRequest = (todosData: ToDoItem[]) =>
+  axios.post('/api/todo', todosData).then((res) => res.data);
