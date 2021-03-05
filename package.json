@@ -30,7 +30,7 @@
     "client": "yarn run start --prefix client",
     "dev": "concurrently \"yarn run server\" \"yarn run client\"",
     "lint-check": "eslint '*/**/*.{ts,tsx}'",
-    "lint-fix": "eslint '*/**/*.{ts,tsx}' --fix --max-warnings=0"
+    "lint-fix": "cd frontend/ eslint '*/**/*.{ts,tsx}' --fix --max-warnings=0"
   },
   "husky": {
     "hooks": {
